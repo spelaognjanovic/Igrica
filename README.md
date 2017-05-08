@@ -1,2 +1,2 @@
 # Igrica
-Projektna naloga za UVP
+*Projektna naloga* za UVP
