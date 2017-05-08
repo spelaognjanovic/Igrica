@@ -15,10 +15,32 @@ def vislice(n,x0,y0):
         turtle.seth(90)
         turtle.pd()
         turtle.forward(200)
-    elif n == 3:
         
-
     
     turtle.pu()
+
+
+#Funkcija, ki nariše toliko črt kot ima beseda dolžino
+#(x1,y1) Začetna pozicija črt
+# d- dolžina ene črte
+#Funkcija dobi dvignjen kuli in pusti dvignjenega
+
+def crte(n, x1, y1, d):
+    for i in range(n): # naredimo n korakov od 0 do n-1
+        turtle.goto(x1, y1)
+        turtle.pd()
+        turtle.seth(0)
+        turtle.forward(d)
+        turtle.pu()
+        x1 += d+20
+
+#Naslednjic kar se je treba lotit je risanje crk..
+#na i-to mesto ti nariše znak
+#def risi_scrko(znak, i, x1, y1, d) i-indeks kero crko risemo..
+        
+        
+        
+        
+    
 
 
