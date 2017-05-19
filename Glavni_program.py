@@ -10,7 +10,7 @@ okno.geometry('{}x{}'.format(700, 500))
 
 #Funkcija,ki bo postavila gumbe
 def postavi_abecedo():  
-    gumbi = tk.Frame(okno) #okvir za vseh 25 gumbov #frame navidezzno polje
+    gumbi = tk.Frame(okno) #okvir za vseh 25 gumbov #frame navidezno polje
     
     for i in range(5):
         for j in range(5):
@@ -19,40 +19,46 @@ def postavi_abecedo():
     gumbi.place(relx=0.7, rely=0.4)
 
 
-#Gumb nova igra          
+#Še Gumb za začetek nove igre          
 def nova_igra():
     gumb_nov_zacetek = tk.Button(okno, text='Nova igra')
     gumb_nov_zacetek.place(relx=0.73, rely=0.3)
 
 
 
-
-slika = tk.Canvas(okno,width=300,height=400)
-def vislice(n):
-    if n ==1:
-        slika.create_polygon(50,300,50,310,150,310,150,300)
+#Funkcija, ki nariše vislice
+slika = tk.Canvas(okno,width=400,height=500)
+def vislice(n): #n bo najvec 10, torej 10 možnosti za ugib črk, drugače se izrišejo vislice
+    if n == 1:
+        slika.create_polygon(50,305,50,310,150,310,150,305)
     if n == 2:
-        slika.create_polygon(100,180,100,310,110,310,110,180)
+        slika.create_polygon(100,180,100,310,105,310,105,180)
     if n == 3:
-        slika.create_polygon(100,180,100,310,110,310,110,180)
-        
-        
-        
-    
-          
-    
-    
+        slika.create_polygon(10,175,10,180,105,180,105,175)
+    if n == 4:
+        slika.create_polygon(5,175,5,200,10,200,10,175)
+    if n == 5:
+        slika.create_oval(2,200,25,225)#vneseš 1. in 3. koordinato
 
 
-prav1 = slika.create_polygon(10,10,20,10,20,20,10,20,fill="red")
-
+    
 slika.pack()
+
+#Funkcija, ki presteje stevilo crk v besedi
+#def st_crk(beseda): #lahko še narandom izberemo besedo
+    #st_crk = beseda.count
+
+#Funkcija, ki nariše št. črt
+#def narici_crte(st_crk):
+    
 
 postavi_abecedo() #še pokliči funkcijo
 nova_igra()
 vislice(1)
 vislice(2)
-
+vislice(3)
+vislice(4)
+vislice(5)
 tk.mainloop()
     
 
