@@ -8,17 +8,6 @@ okno.resizable(width=False, height=False)#uporabnik ne more spreminjati velikost
 okno.geometry('{}x{}'.format(800, 600)) 
 
 
-#Funkcija,ki bo postavila gumbe
-def postavi_abecedo():  
-    gumbi = tk.Frame(okno) #okvir za vseh 25 gumbov #frame navidezno polje
-    
-    for i in range(5):
-        for j in range(5):
-            gumb = tk.Button(gumbi, text=slovenska_abeceda[5*i + j])
-            gumb.grid(row = i, column = j)
-    gumbi.place(relx=0.7, rely=0.4)
-
-
 #Še Gumb za začetek nove igre          
 def nova_igra():
     gumb_nov_zacetek = tk.Button(okno, text='Nova igra')
@@ -53,7 +42,7 @@ def vislice(n): #n bo najvec 10, torej 10 možnosti za ugib črk, drugače se iz
 slika.pack()
 
 #Funkcija, ki nariše št. črt
-def narici_crte(beseda):
+def narisi_crte(beseda):
     st_crk = len(beseda)
     x = -15
     for i in range(st_crk):
@@ -64,9 +53,11 @@ def narici_crte(beseda):
 # Funkcijo. ki vzame kot argument besedo in crko
 #in nato izpiše/izriše črke na črto
 def izpisi_crko(beseda, crka):
-    global poteza #Poeni, da spremenljivka živi
+    global poteza #Pomeni, da spremenljivka živi
     #zunaj funkcije in ta funkcija jo uporablja
     st_uganjenih =0
+    print(beseda)
+    print(crka)
     for i in range(len(beseda)):       
         if beseda[i] == crka:
             st_uganjenih +=1
@@ -81,16 +72,23 @@ class Gumb:
         self.beseda = beseda
         self.i = i #vsak gumb se more zavedat na kateri koordinati je
         self.j= j
+        self.gumb.grid(row = i, column = j)
 
     def izpisi(self):
         izpisi_crko(self.beseda,slovenska_abeceda[5*self.i + self.j])#crka je ko klikneš
-        #se ko pritisneš da gumb ostane noter stisnjenS
+        #se ko pritisneš da gumb ostane noter stisnjen
         
         
 
 #gumbi za abecedo          
 class Gumbi:
-    def __init__:
+    def __init__(self,okno, beseda):
+        self.okvir = tk.Frame(okno)
+        seznam_gumbov = []
+        for i in range(5):
+            for j in range(5):
+                seznam_gumbov.append(Gumb(i,j,self.okvir,beseda))
+        self.okvir.place(relx=0.7, rely=0.4)
         
         
     
@@ -99,14 +97,13 @@ class Gumbi:
 
 
 
-postavi_abecedo() #še pokliči funkcijo
+ #še pokliči funkcijo
+
 nova_igra()
+gumbi = Gumbi(okno,'AVTOMOBIL')
+narisi_crte('AVTOMOBIL')
 
-narici_crte('avtomobil')
-izpisi_crko('avtomobil', 'a')
-izpisi_crko('avtomobil', 'o')
-izpisi_crko('avtomobil', 'š')
-izpisi_crko('avtomobil', 'đ')
+
 
 
 tk.mainloop()
@@ -114,48 +111,8 @@ tk.mainloop()
 
 
 
-
 #https://www.tutorialspoint.com/python/tk_button.htm
 
-#import turtle
-
-# Funkcija, ki nariše n-ti korak vislic, kjer je n med 1 in 11.
-#Kordinate nožišča vislic so točno (x0,y0).
-#Funkcija dobi dvignjen kuli in ga tudi na koncu pusti dvignjenga.
-
-#def vislice(n,x0,y0):
- #   if n == 1:
-  #      turtle.goto(x0-20, y0)
-   #     turtle.pd()
-    #    turtle.seth(0)
-     #   turtle.forward(40)
-    #elif n == 2:
-     #   turtle.goto(x0,y0)
-      #  turtle.seth(90)
-       # turtle.pd()
-        #turtle.forward(200)
-        
-    
-   # turtle.pu()
-
-
-#Funkcija, ki nariše toliko črt kot ima beseda dolžino
-#(x1,y1) Začetna pozicija črt
-# d- dolžina ene črte
-#Funkcija dobi dvignjen kuli in pusti dvignjenega
-
-#def crte(n, x1, y1, d):
- #   for i in range(n): # naredimo n korakov od 0 do n-1
-  #      turtle.goto(x1, y1)
-   #     turtle.pd()
-    #    turtle.seth(0)
-     #   turtle.forward(d)
-      #  turtle.pu()
-       # x1 += d+20
-
-#Naslednjic kar se je treba lotit je risanje crk..
-#na i-to mesto ti nariše znak
-#def risi_scrko(znak, i, x1, y1, d) i-indeks kero crko risemo..
         
         
         
