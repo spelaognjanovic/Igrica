@@ -39,7 +39,7 @@ class Vislice:
         self.gumb_nov_zacetek = tk.Button(okno, text='Nova igra',command=self.nova_igra)
         self.gumb_nov_zacetek.place(relx=0.73, rely=0.3)
         self.slika = tk.Canvas(okno,width=500,height=800)
-        self.slika.place(x=10, y=10)
+        self.slika.place(x=50, y=10)
         self.seznam_gumbov = []
         for i in range(5):
             for j in range(5):
@@ -52,26 +52,24 @@ class Vislice:
         if n == 2:
             self.slika.create_polygon(100,180,100,310,105,310,105,180)
         if n == 3:
-            self.slika.create_polygon(10,175,10,180,105,180,105,175)
+            self.slika.create_polygon(15,175,15,180,105,180,105,175)
         if n == 4:
-            self.slika.create_polygon(5,175,5,200,10,200,10,175)
+            self.slika.create_polygon(10,175,10,200,15,200,15,175)
         if n == 5:
-            self.slika.create_oval(2,200,22,220)#vneseš 1. in 3. koordinato
+            self.slika.create_oval(1,200,23,220)#vneseš 1. in 3. koordinato
         if n == 6:
             self.slika.create_polygon(11,220,11,270,13,270,13,220)
         if n == 7:
-            self.slika.create_polygon(0,200,0,202,11,237,11,235)
-        if n == 8:
+            self.slika.create_polygon(1,200,0,202,11,237,11,235)
             self.slika.create_polygon(13,235,13,237,28,202,28,200)
-        if n == 9:
+        if n == 8:
             self.slika.create_polygon(0,300,0,302,11,270,11,268)
-        if n == 10:
             self.slika.create_polygon(13,268,13,270,24,302,24,300)
 
             
     def narisi_crte(self):
         st_crk = len(self.beseda)
-        x = -15
+        x = 150
         for i in range(st_crk):
             x+=35
             self.slika.create_polygon(x,515,x,517,x+20,517,x+20,515)
@@ -85,7 +83,7 @@ class Vislice:
         for i in range(len(self.beseda)):       
             if self.beseda[i].upper() == crka.upper():
                 st_uganjenih +=1
-                self.slika.create_text(30 + i*35, 505, text=crka.upper())
+                self.slika.create_text(195 + i*35, 505, text=crka.upper())
         print(st_uganjenih)
         print(self.beseda)
         print(crka)
@@ -99,8 +97,9 @@ class Vislice:
         if st_uganjenih == 0:
             self.poteza +=1      
             self.vislice(self.poteza)
-            if self.poteza == 10:
-                self.slika.create_text(60, 400, text='IZGUBILI STE!')
+            if self.poteza == 8:
+                self.slika.create_text(280, 380, text='IZGUBILI STE!')
+                self.slika.create_text(280, 420, text='Iskana beseda je bila {0}'.format(self.beseda))
                 for i in range(25):
                     self.seznam_gumbov[i].gumb.configure(state="disabled") 
                 self.aktivno = False
